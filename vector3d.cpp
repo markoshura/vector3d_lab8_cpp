@@ -44,6 +44,13 @@ vector3d vector3d::operator+(const vector3d &a) {
     return vector3d(new_x, new_y, new_z);
 }
 
+vector3d vector3d::operator+(const vector3d &a) const {
+    double new_x = x + a.x;
+    double new_y = y + a.y;
+    double new_z = z + a.z;
+    return vector3d(new_x, new_y, new_z);
+}
+
 vector3d vector3d::operator-(const vector3d &a) {
     double new_x = x - a.x;
     double new_y = y - a.y;
@@ -52,6 +59,10 @@ vector3d vector3d::operator-(const vector3d &a) {
 }
 
 vector3d vector3d::operator-() {
+    return vector3d(-x, -y, -z);
+}
+
+vector3d vector3d::operator-() const{
     return vector3d(-x, -y, -z);
 }
 
@@ -80,6 +91,12 @@ vector3d vector3d::operator^(const vector3d &a) {
     return vector3d(new_x, new_y, new_z);
 }
 
+vector3d vector3d::operator^(const vector3d &a) const {
+    double new_x = y * a.z - z * a.y;
+    double new_y = a.x * z - x * a.z;
+    double new_z = x * a.y - y * a.x;
+    return vector3d(new_x, new_y, new_z);
+}
 
 bool operator==(const vector3d &a, const vector3d &b) {
     return b.x == a.x && b.y == a.y && b.z == a.z;
